@@ -13,7 +13,7 @@ function generatePassword() {
   var selectedPool= "";
   //THe Prompts for Password
   var passwordLength= parseInt(prompt ("How long do you want your password to be?")); 
-  while (passwordLength<8 || passwordLength>128) {
+  while (Number.isNaN(passwordLength) || passwordLength<8 || passwordLength>128) {
     var passwordLength = parseInt(prompt("Password HAS to be a number between 8 and 128. How long do you want your password to be?"));
   }
   //Conditions
@@ -25,26 +25,29 @@ function generatePassword() {
   //If statements to pull the character 
   if(useCapitalLetter) {
     selectedPool += capitalLetter;
+    newPassword += capitalLetter.charAt(Math.floor(Math.floor()*capitalLetter.passwordLength))
   }
 
   if(useLowerCase) {
     selectedPool += lowerCase;
+    newPassword += lowerCase.charAt(Math.floor(Math.floor()*lowerCase.passwordLength))
   }
   
   if(useNumber) {
     selectedPool += number;
+    newPassword += number.charAt(Math.floor(Math.floor()*number.passwordLength))
   }
 
   if(useSpecialCharacter) {
     selectedPool += specialCharacter;
+    newPassword += specialCharacter.charAt(Math.floor(Math.floor()*specialCharacter.passwordLength))
   }
 
 
   //For loop to generate a new password 
-  for (var i=0; i <passwordLength; i++) {
+  for (var i= newPassword.length; i <passwordLength; i++) {
     newPassword += selectedPool.charAt(Math.floor(Math.random()*selectedPool.length));
   }
-  console.log (newPassword)
   return newPassword;
 }
 
