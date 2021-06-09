@@ -5,7 +5,7 @@
 var capitalLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var number = "0123456789";
-var specialCharecter = "!#$%&()*+,-./:;<=>?@[\]^_{|}~";
+var specialCharacter = "!#$%&()*+,-./:;<=>?@[\]^_{|}~";
 
 //Function for password
 function generatePassword() {
@@ -22,39 +22,31 @@ function generatePassword() {
   var useNumber= confirm ("Do you want to use a Number?");
   var useSpecialCharacter= confirm ("Do you want to use a Special Character?");
 
-  //test coce
-  // var characterPool = {
-    // capital: useCapitalLetter
-    // lower: useLowerCase
-    // special: 
-  }
   //If statements to pull the character 
   if(useCapitalLetter) {
-    selectedPool = selectedPool + capitalLetter;
-    newPassword = capitalLetter.charAt(Math.floor(Math.random())*capitalLetter.length)
+    selectedPool += capitalLetter;
   }
 
   if(useLowerCase) {
-    selectedPool= selectedPool + capitalLetter;
-    newPassword = lowerCase.charAt(Math.floor(Math.random())*lowerCase.length)
+    selectedPool += lowerCase;
   }
   
   if(useNumber) {
-    selectedPool= selectedPool + number;
-    newPassword = number.charAt(Math.floor(Math.random())*number.length)
+    selectedPool += number;
   }
 
   if(useSpecialCharacter) {
-    selectedPool= selectedPool + specialCharacter;
-    newPassword = specialCharacter.charAt(Math.floor(Math.random())*specialCharacter.length)
+    selectedPool += specialCharacter;
   }
+
 
   //For loop to generate a new password 
-  for (var i=newPassword.length; i <length; i++) {
-    newPassword += selectedPool.charAt(math.floor(Math.random()*selectedPool.length))
+  for (var i=0; i <passwordLength; i++) {
+    newPassword += selectedPool.charAt(Math.floor(Math.random()*selectedPool.length));
   }
+  console.log (newPassword)
+  return newPassword;
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
