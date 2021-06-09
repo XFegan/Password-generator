@@ -10,7 +10,7 @@ var specialCharecter = "!#$%&()*+,-./:;<=>?@[\]^_{|}~";
 //Function for password
 function generatePassword() {
   var newPassword= "";
-  var selectodPool= "";
+  var selectedPool= "";
   //THe Prompts for Password
   var passwordLength= parseInt(prompt ("How long do you want your password to be?")); 
   while (passwordLength<8 || passwordLength>128) {
@@ -22,27 +22,37 @@ function generatePassword() {
   var useNumber= confirm ("Do you want to use a Number?");
   var useSpecialCharacter= confirm ("Do you want to use a Special Character?");
 
+  //test coce
+  // var characterPool = {
+    // capital: useCapitalLetter
+    // lower: useLowerCase
+    // special: 
+  }
   //If statements to pull the character 
   if(useCapitalLetter) {
-    selectodPool = selectodPool + capitalLetter;
+    selectedPool = selectedPool + capitalLetter;
     newPassword = capitalLetter.charAt(Math.floor(Math.random())*capitalLetter.length)
   }
 
   if(useLowerCase) {
-    selectodPool= selectodPool + capitalLetter;
-    newPassword = lowerCase.charAt(Math.floor(Math.random())*lowerCase)
+    selectedPool= selectedPool + capitalLetter;
+    newPassword = lowerCase.charAt(Math.floor(Math.random())*lowerCase.length)
   }
   
   if(useNumber) {
-    selectodPool= selectodPool + number;
-    newPassword = number.charAt(Math.floor(Math.random())*number)
+    selectedPool= selectedPool + number;
+    newPassword = number.charAt(Math.floor(Math.random())*number.length)
   }
 
   if(useSpecialCharacter) {
-    selectodPool= selectodPool + specialCharacter;
-    newPassword = specialCharacter.charAt(Math.floor(Math.random())*specialCharacter)
+    selectedPool= selectedPool + specialCharacter;
+    newPassword = specialCharacter.charAt(Math.floor(Math.random())*specialCharacter.length)
   }
 
+  //For loop to generate a new password 
+  for (var i=newPassword.length; i <length; i++) {
+    newPassword += selectedPool.charAt(math.floor(Math.random()*selectedPool.length))
+  }
 }
 
 
